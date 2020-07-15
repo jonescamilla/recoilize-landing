@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+#root {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.container {
+  padding: 0 2.5%;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
+  text-align: center;
+  line-height: 1.75;
+  font-size: 3em;
+  font-family: Menlo;
+}
+
+.box-win {
+  border: 2px solid red;
+  color: red;
+}
