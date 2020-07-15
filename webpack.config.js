@@ -1,10 +1,8 @@
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+const config = {
   mode: 'development',
-  entry: './src/app.jsx',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -12,23 +10,22 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: ['babel-loader'],
       },
-    ],
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ]
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-    }),
-    new CopyPlugin([
-      { from: './src/style.css' },
-    ]),
-  ],
+  resolve: {
+    extensions: ['.tsx', '.ts'],
+  },
   devServer: {
     contentBase: './dist',
   },
-  devtool: 'eval-source-map',
-};
+}
+
+module.exports = config;
